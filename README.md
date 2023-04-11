@@ -3,10 +3,15 @@ The New Employee Integration App is an Android application built using Jetpack C
 
 ## Features
 ‧ Helps new employees get acquainted with the company's workflow
+
 ‧ Tasks divided into three types: Required, Optional, and Team Building
+
 ‧ Room Database to store tasks and their details
+
 ‧ Dagger Hilt for dependency injection
+
 ‧ Clean architecture approach for better code organization and scalability
+
 ‧ Jetpack Compose for a modern, declarative UI
 
 ## Getting Started
