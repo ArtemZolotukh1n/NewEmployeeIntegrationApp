@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.example.newemployeeintegrationapp.data.database.AppDatabase
 import com.example.newemployeeintegrationapp.data.database.TaskDao
+import com.example.newemployeeintegrationapp.data.repository.TaskRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +23,10 @@ object AppModule {
     @Provides
     @Singleton
     fun provideTaskDao(appDatabase: AppDatabase): TaskDao = appDatabase.taskDao()
+
+    @Provides
+    @Singleton
+    fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
+        return TaskRepository(taskDao)
+    }
 }

@@ -3,6 +3,7 @@ package com.example.newemployeeintegrationapp.data.database
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TaskDao {
@@ -14,5 +15,8 @@ interface TaskDao {
 
     @Insert
     suspend fun insertTask(task: TaskEntity)
+
+    @Query("Select * FROM tasks")
+    fun getAllTasksAsFlow(): Flow<List<TaskEntity>>
 
 }
