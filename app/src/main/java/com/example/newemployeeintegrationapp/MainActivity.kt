@@ -1,7 +1,6 @@
 package com.example.newemployeeintegrationapp
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -11,15 +10,12 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.newemployeeintegrationapp.data.database.TaskEntity
+import com.example.newemployeeintegrationapp.domain.model.Task
 import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
 import com.example.newemployeeintegrationapp.ui.theme.NewEmployeeIntegrationAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +43,7 @@ class MainActivity : ComponentActivity() {
 
 
 @Composable
-fun columnShit(tasks: List<TaskEntity>) {
+fun columnShit(tasks: List<Task>) {
     LazyColumn() {
         items(tasks) { task ->
             Column(modifier = Modifier.padding(8.dp)) {

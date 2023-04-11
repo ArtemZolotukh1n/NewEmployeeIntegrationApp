@@ -2,6 +2,9 @@ package com.example.newemployeeintegrationapp.data.database
 
 import androidx.room.TypeConverter
 
+//mb will use or not still thinking
+
+
 class TaskTypeConverter {
     @TypeConverter
     fun fromTaskType(taskType: TaskType): String {
