@@ -11,10 +11,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
 
 @Composable
-fun QuestScreen(viewModel: QuestScreenViewModel) {
+fun QuestScreen(viewModel: QuestScreenViewModel = hiltViewModel()) {
     val tasks = viewModel.AllTasks.collectAsState().value
 
     LazyColumn() {

@@ -4,6 +4,9 @@ import android.content.Context
 import com.example.newemployeeintegrationapp.data.database.AppDatabase
 import com.example.newemployeeintegrationapp.data.database.TaskDao
 import com.example.newemployeeintegrationapp.data.repository.TaskRepository
+import com.example.newemployeeintegrationapp.domain.usecase.DeleteTaskUseCase
+import com.example.newemployeeintegrationapp.domain.usecase.GetTasksByTypeUseCase
+import com.example.newemployeeintegrationapp.domain.usecase.GetTasksUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,5 +30,23 @@ object AppModule {
     @Singleton
     fun provideTaskRepository(taskDao: TaskDao): TaskRepository {
         return TaskRepository(taskDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetTasksUseCase(repository: TaskRepository): GetTasksUseCase {
+        return GetTasksUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetTasksByTypeUseCase(repository: TaskRepository): GetTasksByTypeUseCase {
+        return GetTasksByTypeUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideDeleteTaskUseCase(repository: TaskRepository): DeleteTaskUseCase {
+        return DeleteTaskUseCase(repository)
     }
 }
