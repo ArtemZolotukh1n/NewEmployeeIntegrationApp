@@ -19,11 +19,12 @@ import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.newemployeeintegrationapp.R
 
 
 @Composable
-fun QuestTopAppBar() {
+fun QuestTopAppBar(screenTitle: String, navController: NavController) {
     TopAppBar(
         backgroundColor = MaterialTheme.colors.background,
         elevation = AppBarDefaults.TopAppBarElevation,
@@ -41,7 +42,7 @@ fun QuestTopAppBar() {
             Box(
                 Modifier
                     .size(24.dp)
-                    .clickable {  }
+                    .clickable { }
                     .padding(end = 4.dp)
             ) {
                 Icon(
@@ -51,7 +52,7 @@ fun QuestTopAppBar() {
                     modifier = Modifier
                         .padding(start = 8.dp)
                         .fillMaxSize()
-                        .clickable {  }
+                        .clickable { navController.popBackStack() }
                 )
             }
             Image(
@@ -63,7 +64,7 @@ fun QuestTopAppBar() {
             )
             // Text "Список задач"
             Text(
-                text = "Список задач",
+                text = screenTitle,
                 color = MaterialTheme.colors.onSurface,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,

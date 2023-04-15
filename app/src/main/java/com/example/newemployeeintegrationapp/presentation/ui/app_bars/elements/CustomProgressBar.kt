@@ -25,7 +25,7 @@ fun CustomProgressBarInsideLabel(progress: Float, color: Color) {
             color = color,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(28.dp)
+                .height(24.dp)
         )
 
         // Add the label text inside the progress bar

@@ -7,12 +7,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.newemployeeintegrationapp.R
+import com.example.newemployeeintegrationapp.navigation.Screen
 import com.example.newemployeeintegrationapp.presentation.ui.app_bars.elements.MyBottomNavigationItem
 
 
 @Composable
-fun AppsBottomNavigationBar() {
+fun AppsBottomNavigationBar(navController: NavHostController) {
     var selectedItem by remember { mutableStateOf(0) }
     val items = listOf(
         MyBottomNavigationItem(
@@ -27,6 +29,7 @@ fun AppsBottomNavigationBar() {
             selected = false,
             onClick = {
                 selectedItem = 0
+                navController.navigate(Screen.QuestScreen.route)
             },
             modifier = Modifier.padding(16.dp)
         ),
@@ -42,6 +45,7 @@ fun AppsBottomNavigationBar() {
             selected = false,
             onClick = {
                 selectedItem = 1
+                navController.navigate(Screen.KnowledgeScreen.route)
             },
             modifier = Modifier.padding(16.dp)
         ),

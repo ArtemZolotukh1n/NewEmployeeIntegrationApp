@@ -10,7 +10,6 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
-import com.example.eestechhckathon.QuestTopAppBar
 import com.example.newemployeeintegrationapp.navigation.NavGraph
 import com.example.newemployeeintegrationapp.presentation.ui.app_bars.AppsBottomNavigationBar
 import com.example.newemployeeintegrationapp.ui.theme.NewEmployeeIntegrationAppTheme
@@ -23,15 +22,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             NewEmployeeIntegrationAppTheme {
+                val navController = rememberNavController()
                 // A surface container using the 'background' color from the theme
                 Scaffold(
-                    topBar = { QuestTopAppBar() },
-                    bottomBar = { AppsBottomNavigationBar() }
+                    bottomBar = { AppsBottomNavigationBar(navController) }
                 ) {
                     Surface(
                         modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                     ) {
-                        val navController = rememberNavController()
                         NavGraph(navController = navController)
                     }
                 }

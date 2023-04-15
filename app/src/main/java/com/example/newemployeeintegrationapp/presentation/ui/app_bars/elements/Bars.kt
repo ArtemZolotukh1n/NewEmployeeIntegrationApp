@@ -53,7 +53,6 @@ fun CustomProgressBars(firstProgress: Float, secondProgress: Float, thirdProgres
                         .size(30.dp),
                     tint = Color(0xFFFF0000)
                 )
-                Spacer(Modifier.width(4.dp))
                 CustomProgressBarInsideLabel(
                     progress = animatedProgressOne,
                     color = Color(0xFFEC2C2C),
