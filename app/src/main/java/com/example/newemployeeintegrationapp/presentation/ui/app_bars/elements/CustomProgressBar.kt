@@ -14,15 +14,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun CustomProgressBarInsideLabel(progress: Float) {
+fun CustomProgressBarInsideLabel(progress: Float, color: Color) {
     Box(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .fillMaxWidth(0.75f)
     ) {
         // Add LinearProgressIndicator with custom progress and increased height
         LinearProgressIndicator(
             progress = progress,
+            color = color,
             modifier = Modifier
                 .fillMaxWidth()
                 .height(28.dp)
@@ -44,6 +44,6 @@ fun CustomProgressBarInsideLabel(progress: Float) {
 @Composable
 fun CustomProgressBarPreview() {
     Surface {
-        CustomProgressBarInsideLabel(progress = 0.5f)
+        CustomProgressBarInsideLabel(progress = 0.5f, color = Color(0xFFEC2C2C))
     }
 }

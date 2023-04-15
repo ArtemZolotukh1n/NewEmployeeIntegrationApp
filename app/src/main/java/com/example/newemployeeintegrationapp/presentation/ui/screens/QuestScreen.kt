@@ -29,15 +29,15 @@ import com.google.accompanist.flowlayout.FlowRow
 
 @Composable
 fun MainQuestScreen(viewModel: QuestScreenViewModel) {
+    val requiredTasks = viewModel.requiredTasks.collectAsState().value
+    val optionalTasks = viewModel.optionalTasks.collectAsState().value
+    val teamBuildingTasks = viewModel.teamBuildingTasks.collectAsState().value
     LazyColumn(
-        modifier = Modifier.fillMaxSize(),
-        contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp)
+        modifier = Modifier.fillMaxSize(), contentPadding = PaddingValues(top = 8.dp, bottom = 8.dp)
     ) {
         item {
             MainQuestsColumn(
-                viewModel.requiredTasks.collectAsState().value,
-                viewModel.optionalTasks.collectAsState().value,
-                viewModel.teamBuildingTasks.collectAsState().value
+                requiredTasks, optionalTasks, teamBuildingTasks
             )
         }
         item {
@@ -48,7 +48,11 @@ fun MainQuestScreen(viewModel: QuestScreenViewModel) {
             )
         }
         item {
-            CustomProgressBars()
+            CustomProgressBars(
+                requiredTasks.map { it.isDone == 1 }.size.toFloat() / viewModel.requiredAmount.collectAsState().value,
+                optionalTasks.map { it.isDone == 1 }.size.toFloat() / viewModel.optionalAmount.collectAsState().value,
+                teamBuildingTasks.map { it.isDone == 1 }.size.toFloat() / viewModel.teamBuildingAmount.collectAsState().value
+            )
         }
     }
 }
@@ -56,9 +60,7 @@ fun MainQuestScreen(viewModel: QuestScreenViewModel) {
 
 @Composable
 fun MainQuestsColumn(
-    mainTasks: List<Task>,
-    secondaryTasks: List<Task>,
-    additionalTasks: List<Task>
+    mainTasks: List<Task>, secondaryTasks: List<Task>, additionalTasks: List<Task>
 ) {
 
     Column(
@@ -72,9 +74,7 @@ fun MainQuestsColumn(
             elevation = 4.dp
         ) {
             TasksList(
-                mainTasks,
-                "Обязательные задачи",
-                R.drawable.polygon_1
+                mainTasks, "Обязательные задачи", R.drawable.polygon_1
             )
         }
         Spacer(modifier = Modifier.padding(vertical = 6.dp))
@@ -85,10 +85,7 @@ fun MainQuestsColumn(
             elevation = 4.dp
         ) {
             TasksList(
-                secondaryTasks,
-                "Дополнительные задачи",
-                R.drawable.polygon_2,
-                Color(0xff9354FA)
+                secondaryTasks, "Дополнительные задачи", R.drawable.polygon_2, Color(0xff9354FA)
             )
         }
         Spacer(modifier = Modifier.padding(vertical = 6.dp))
@@ -99,10 +96,7 @@ fun MainQuestsColumn(
             elevation = 4.dp
         ) {
             TasksList(
-                additionalTasks,
-                "Тимбилдинг",
-                R.drawable.polygon_3,
-                Color(0xff2C9BEC)
+                additionalTasks, "Тимбилдинг", R.drawable.polygon_3, Color(0xff2C9BEC)
             )
         }
     }

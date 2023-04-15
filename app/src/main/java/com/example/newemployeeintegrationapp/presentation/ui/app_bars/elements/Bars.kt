@@ -15,16 +15,15 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.newemployeeintegrationapp.R
 
 @Composable
-fun CustomProgressBars() {
+fun CustomProgressBars(firstProgress: Float, secondProgress: Float, thirdProgress: Float) {
     // Create a mutable state to store the progress value
-    val progress_one = remember { mutableStateOf(0.9f) }
-    val progress_two = remember { mutableStateOf(0.6f) }
-    val progress_three = remember { mutableStateOf(0.1f) }
+    val progress_one = remember { mutableStateOf(firstProgress) }
+    val progress_two = remember { mutableStateOf(secondProgress) }
+    val progress_three = remember { mutableStateOf(thirdProgress) }
     val animatedProgressOne = animateFloatAsState(
         targetValue = progress_one.value,
         animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
@@ -55,10 +54,9 @@ fun CustomProgressBars() {
                     tint = Color(0xFFFF0000)
                 )
                 Spacer(Modifier.width(4.dp))
-                LinearProgressIndicator(
+                CustomProgressBarInsideLabel(
                     progress = animatedProgressOne,
                     color = Color(0xFFEC2C2C),
-                    modifier = Modifier.height(20.dp)
                 )
             }
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
@@ -72,10 +70,9 @@ fun CustomProgressBars() {
 
                 )
 
-                LinearProgressIndicator(
+                CustomProgressBarInsideLabel(
                     progress = animatedProgressTwo,
                     color = Color(0xFF9354FA),
-                    modifier = Modifier.height(20.dp),
                 )
             }
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
@@ -89,11 +86,9 @@ fun CustomProgressBars() {
                     Color(0xff2C9BEC)
 
                 )
-                LinearProgressIndicator(
+                CustomProgressBarInsideLabel(
                     progress = animatedProgressThree,
                     color = Color(0xFF2C9BEC),
-                    modifier = Modifier.height(20.dp)
-
                 )
             }
         }
@@ -132,10 +127,4 @@ fun HorizontalProgressBar(
     }
 }
 
-
-@Preview
-@Composable
-fun Bars() {
-    CustomProgressBars()
-}
 

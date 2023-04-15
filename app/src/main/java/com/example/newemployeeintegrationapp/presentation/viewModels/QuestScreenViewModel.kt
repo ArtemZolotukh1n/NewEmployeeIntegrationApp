@@ -30,26 +30,26 @@ class QuestScreenViewModel @Inject constructor(
     private val _teamBuildingTasks = MutableStateFlow<List<Task>>(emptyList())
     val teamBuildingTasks: StateFlow<List<Task>> get() = _teamBuildingTasks
 
-    private val _tasksAmount = MutableStateFlow(0)
-    val tasksAmount: StateFlow<Int> get() = _tasksAmount
-    private val _requiredAmount = MutableStateFlow(0)
-    val requiredAmount: StateFlow<Int> get() = _requiredAmount
-    private val _optionalAmount = MutableStateFlow(0)
-    val optionalAmount: StateFlow<Int> get() = _optionalAmount
-    private val _teamBuildingAmount = MutableStateFlow(0)
-    val teamBuildingAmount: StateFlow<Int> get() = _teamBuildingAmount
+    private val _tasksAmount = MutableStateFlow(0f)
+    val tasksAmount: StateFlow<Float> get() = _tasksAmount
+    private val _requiredAmount = MutableStateFlow(0f)
+    val requiredAmount: StateFlow<Float> get() = _requiredAmount
+    private val _optionalAmount = MutableStateFlow(0f)
+    val optionalAmount: StateFlow<Float> get() = _optionalAmount
+    private val _teamBuildingAmount = MutableStateFlow(0f)
+    val teamBuildingAmount: StateFlow<Float> get() = _teamBuildingAmount
 
 
     init {
         viewModelScope.launch {
             _tasks.value = getTasksUseCase.execute()
-            _tasksAmount.value = _tasks.value.size
+            _tasksAmount.value = _tasks.value.size.toFloat()
             _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
-            _requiredAmount.value = _requiredTasks.value.size
+            _requiredAmount.value = _requiredTasks.value.size.toFloat()
             _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
-            _optionalAmount.value = _optionalTasks.value.size
+            _optionalAmount.value = _optionalTasks.value.size.toFloat()
             _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
-            _teamBuildingAmount.value = _teamBuildingTasks.value.size
+            _teamBuildingAmount.value = _teamBuildingTasks.value.size.toFloat()
         }
     }
 
