@@ -32,10 +32,13 @@ class QuestScreenViewModel @Inject constructor(
 
     private val _tasksAmount = MutableStateFlow(0f)
     val tasksAmount: StateFlow<Float> get() = _tasksAmount
+
     private val _requiredAmount = MutableStateFlow(0f)
     val requiredAmount: StateFlow<Float> get() = _requiredAmount
+
     private val _optionalAmount = MutableStateFlow(0f)
     val optionalAmount: StateFlow<Float> get() = _optionalAmount
+
     private val _teamBuildingAmount = MutableStateFlow(0f)
     val teamBuildingAmount: StateFlow<Float> get() = _teamBuildingAmount
 
@@ -44,15 +47,20 @@ class QuestScreenViewModel @Inject constructor(
         viewModelScope.launch {
             _tasks.value = getTasksUseCase.execute()
             _tasksAmount.value = _tasks.value.size.toFloat()
+
             _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
             _requiredAmount.value = _requiredTasks.value.size.toFloat()
+
             _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
             _optionalAmount.value = _optionalTasks.value.size.toFloat()
+
             _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
             _teamBuildingAmount.value = _teamBuildingTasks.value.size.toFloat()
         }
     }
 
+
+    //I dont need this function - because I wont delete any rows in my tables - I will just change their isDone value
     fun deleteTask(task: Task) {
         viewModelScope.launch {
             deleteTaskUseCase.execute(task)

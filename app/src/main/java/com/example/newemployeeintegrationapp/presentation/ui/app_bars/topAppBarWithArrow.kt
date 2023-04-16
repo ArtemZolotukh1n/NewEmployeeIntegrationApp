@@ -24,7 +24,7 @@ import com.example.newemployeeintegrationapp.R
 
 
 @Composable
-fun QuestTopAppBar(screenTitle: String, navController: NavController) {
+fun QuestTopAppBarWithBackArrow(screenTitle: String, navController: NavController) {
     TopAppBar(
         backgroundColor = MaterialTheme.colors.background,
         elevation = AppBarDefaults.TopAppBarElevation,
@@ -39,6 +39,22 @@ fun QuestTopAppBar(screenTitle: String, navController: NavController) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // User profile image
+            Box(
+                Modifier
+                    .size(24.dp)
+                    .clickable { }
+                    .padding(end = 4.dp)
+            ) {
+                Icon(
+                    imageVector = ImageVector.vectorResource(R.drawable.vector),
+                    contentDescription = "Back",
+                    tint = Color.White.copy(alpha = 0.6f),
+                    modifier = Modifier
+                        .padding(start = 8.dp)
+                        .fillMaxSize()
+                        .clickable { navController.popBackStack() }
+                )
+            }
             Image(
                 painter = painterResource(id = R.drawable.img),
                 contentDescription = "User Profile",
