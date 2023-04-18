@@ -1,9 +1,6 @@
 package com.example.newemployeeintegrationapp.data.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface TaskDao {
@@ -18,5 +15,9 @@ interface TaskDao {
 
     @Delete
     suspend fun deleteTask(task: TaskEntity)
+
+    @Transaction
+    @Query("SELECT * FROM tasks")
+    suspend fun getTasksWithLeaderboardEntries(): List<TaskWithLeaderboardEntries>
 
 }

@@ -2,8 +2,11 @@ package com.example.newemployeeintegrationapp.di
 
 import android.content.Context
 import com.example.newemployeeintegrationapp.data.database.AppDatabase
+import com.example.newemployeeintegrationapp.data.database.LeaderboardDao
 import com.example.newemployeeintegrationapp.data.database.TaskDao
+import com.example.newemployeeintegrationapp.data.database.UserDao
 import com.example.newemployeeintegrationapp.data.repository.TaskRepository
+import com.example.newemployeeintegrationapp.data.repository.UserRepository
 import com.example.newemployeeintegrationapp.domain.usecase.DeleteTaskUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksByTypeUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksUseCase
@@ -48,5 +51,23 @@ object AppModule {
     @Singleton
     fun provideDeleteTaskUseCase(repository: TaskRepository): DeleteTaskUseCase {
         return DeleteTaskUseCase(repository)
+    }
+
+    @Provides
+    @Singleton
+    fun provideLeaderboardDao(appDatabase: AppDatabase): LeaderboardDao {
+        return appDatabase.leaderboardDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserDao(appDatabase: AppDatabase): UserDao {
+        return appDatabase.userDao()
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(userDao: UserDao): UserRepository {
+        return UserRepository(userDao)
     }
 }
