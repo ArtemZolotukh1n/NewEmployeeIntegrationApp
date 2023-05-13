@@ -3,12 +3,12 @@ package com.example.newemployeeintegrationapp.navigation
 import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.eestechhckathon.QuestTopAppBar
 import com.example.eestechhckathon.QuestTopAppBarWithBackArrow
+import com.example.newemployeeintegrationapp.presentation.ui.screens.AllTasksByTypeFiles.AllTasksByTypeScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.KnowledgeDatabaseScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.MainQuestScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.QuestDescScreen
@@ -34,6 +34,7 @@ fun NavGraph(navController: NavHostController, questScreenViewModel: QuestScreen
                 KnowledgeDatabaseScreen()
             }
         }
+
         composable(Screen.QuestDescScreen.route.plus("/{taskDesc}/{taskName}/{taskId}")) { backStackEntry ->
             Scaffold(topBar = {
                 QuestTopAppBarWithBackArrow(
@@ -50,9 +51,25 @@ fun NavGraph(navController: NavHostController, questScreenViewModel: QuestScreen
                 )
             }
         }
+
         composable(Screen.SettingsScreen.route) {
             Scaffold(topBar = { QuestTopAppBar(screenTitle = "Настройки", navController) }) {
                 SettingsScreen()
+            }
+        }
+
+        composable(Screen.AllTasksByTypeScreen.route.plus("/{taskPriority}")) { backStackEntry ->
+            Scaffold(topBar = {
+                QuestTopAppBarWithBackArrow(
+                    screenTitle = backStackEntry.arguments?.getString("taskPriority")
+                        ?: "Ты куда нажал?",
+                    navController
+                )
+            }) {
+                AllTasksByTypeScreen(
+                    backStackEntry.arguments?.getString("taskPriority"),
+                    questScreenViewModel
+                )
             }
         }
     }

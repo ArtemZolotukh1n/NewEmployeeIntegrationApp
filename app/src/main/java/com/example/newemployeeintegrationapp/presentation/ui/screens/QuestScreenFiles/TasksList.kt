@@ -36,7 +36,13 @@ fun TasksList(
             .fillMaxWidth()
     ) {
         Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
-            Text(text = taskPriority, style = MaterialTheme.typography.h1)
+            Text(
+                text = taskPriority,
+                style = MaterialTheme.typography.h1,
+                modifier = Modifier.clickable {
+                    navController.navigate(Screen.AllTasksByTypeScreen.route.plus("/$taskPriority"))
+                }
+            )
             Icon(
                 imageVector = ImageVector.vectorResource(image),
                 contentDescription = null,
