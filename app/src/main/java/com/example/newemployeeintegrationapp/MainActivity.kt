@@ -9,9 +9,11 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.newemployeeintegrationapp.navigation.NavGraph
 import com.example.newemployeeintegrationapp.presentation.ui.app_bars.AppsBottomNavigationBar
+import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
 import com.example.newemployeeintegrationapp.ui.theme.NewEmployeeIntegrationAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +32,10 @@ class MainActivity : ComponentActivity() {
                     Surface(
                         modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background
                     ) {
-                        NavGraph(navController = navController)
+                        NavGraph(
+                            navController = navController,
+                            hiltViewModel<QuestScreenViewModel>()
+                        )
                     }
                 }
             }

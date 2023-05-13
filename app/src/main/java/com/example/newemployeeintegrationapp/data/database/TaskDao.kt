@@ -20,4 +20,7 @@ interface TaskDao {
     @Query("SELECT * FROM tasks")
     suspend fun getTasksWithLeaderboardEntries(): List<TaskWithLeaderboardEntries>
 
+    @Query("UPDATE tasks SET isDone = 1 WHERE id = :taskId")
+    suspend fun setTaskAsDone(taskId: Int)
+
 }

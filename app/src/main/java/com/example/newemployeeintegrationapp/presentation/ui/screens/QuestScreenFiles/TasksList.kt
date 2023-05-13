@@ -53,15 +53,20 @@ fun TasksList(
                 .heightIn(max = 135.dp)
         ) {
             LazyColumn(modifier = Modifier.padding(start = 15.dp)) {
-                items(quests) { quest ->
+                items(quests.filter { it.isDone == 0 }) { quest ->
                     FlowRow(modifier = Modifier.fillMaxWidth()) {
                         Text(
                             text = quest.task,
                             style = MaterialTheme.typography.body1,
                             overflow = TextOverflow.Ellipsis,
-                            modifier = Modifier.clickable { navController.navigate(Screen.QuestDescScreen.route) }
+                            modifier = Modifier.clickable {
+                                navController.navigate(
+                                    Screen.QuestDescScreen.route.plus(
+                                        "/${quest.description}/${quest.task}/${quest.id}"
+                                    )
+                                )
+                            }
                         )
-
                     }
                 }
             }

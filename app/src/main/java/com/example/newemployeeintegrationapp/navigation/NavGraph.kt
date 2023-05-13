@@ -3,7 +3,7 @@ package com.example.newemployeeintegrationapp.navigation
 import android.annotation.SuppressLint
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -17,16 +17,15 @@ import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(navController: NavHostController, questScreenViewModel: QuestScreenViewModel) {
     NavHost(
         navController = navController,
         startDestination = Screen.QuestScreen.route
     )
     {
         composable(Screen.QuestScreen.route) {
-            val viewModel = hiltViewModel<QuestScreenViewModel>()
             Scaffold(topBar = { QuestTopAppBar(screenTitle = "Список задач", navController) }) {
-                MainQuestScreen(viewModel, navController)
+                MainQuestScreen(questScreenViewModel, navController)
             }
         }
 
@@ -35,9 +34,20 @@ fun NavGraph(navController: NavHostController) {
                 KnowledgeDatabaseScreen()
             }
         }
-        composable(Screen.QuestDescScreen.route) {
-            Scaffold(topBar = { QuestTopAppBarWithBackArrow(screenTitle = "Описание задания", navController) }) {
-                QuestDescScreen()
+        composable(Screen.QuestDescScreen.route.plus("/{taskDesc}/{taskName}/{taskId}")) { backStackEntry ->
+            Scaffold(topBar = {
+                QuestTopAppBarWithBackArrow(
+                    screenTitle = "Описание задания",
+                    navController
+                )
+            }) {
+                QuestDescScreen(
+                    backStackEntry.arguments?.getString("taskDesc"),
+                    backStackEntry.arguments?.getString("taskName"),
+                    backStackEntry.arguments?.getString("taskId")?.toIntOrNull() ?: -1,
+                    navController = navController,
+                    viewModel = questScreenViewModel
+                )
             }
         }
         composable(Screen.SettingsScreen.route) {

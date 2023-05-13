@@ -3,6 +3,7 @@ package com.example.newemployeeintegrationapp.presentation.ui.screens.SettingsFi
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
@@ -21,37 +22,42 @@ import com.example.newemployeeintegrationapp.navigation.Screen
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun SettingsScreen() {
-    Column(
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp, bottom = 60.dp)
     ) {
-        Text(
-            text = "General",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(vertical = 6.dp)
-        )
-        GeneralSettings()
+        item {
+            Text(
+                text = "General",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 6.dp)
+            )
+            GeneralSettings()
+        }
 
-        Text(
-            text = "Notifications",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(vertical = 6.dp)
-        )
-        NotificationsSettings()
+        item {
+            Text(
+                text = "Notifications",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 6.dp)
+            )
+            NotificationsSettings()
+        }
 
-        Text(
-            text = "Terms & Support",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(vertical = 6.dp)
-        )
-        TermsAndSupportSettings()
+        item {
+            Text(
+                text = "Terms & Support",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(vertical = 6.dp)
+            )
+            TermsAndSupportSettings()
+        }
     }
 }
-
 
 @Composable
 fun GeneralSettings() {
@@ -78,4 +84,3 @@ fun TermsAndSupportSettings() {
         SettingItem(title = "Support")
     }
 }
-

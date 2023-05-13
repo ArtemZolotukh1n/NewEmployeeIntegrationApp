@@ -6,6 +6,7 @@ import com.example.newemployeeintegrationapp.domain.model.Task
 import com.example.newemployeeintegrationapp.domain.usecase.DeleteTaskUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksByTypeUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksUseCase
+import com.example.newemployeeintegrationapp.domain.usecase.SetTaskAsDoneUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class QuestScreenViewModel @Inject constructor(
     private val getTasksUseCase: GetTasksUseCase,
     private val getTasksByTypeUseCase: GetTasksByTypeUseCase,
-    private val deleteTaskUseCase: DeleteTaskUseCase
+    private val setTaskAsDoneUseCase: SetTaskAsDoneUseCase
 ) : ViewModel() {
     private val _tasks = MutableStateFlow<List<Task>>(emptyList())
     val AllTasks: StateFlow<List<Task>> get() = _tasks
@@ -45,28 +46,34 @@ class QuestScreenViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _tasks.value = getTasksUseCase.execute()
-            _tasksAmount.value = _tasks.value.size.toFloat()
-
-            _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
-            _requiredAmount.value = _requiredTasks.value.size.toFloat()
-
-            _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
-            _optionalAmount.value = _optionalTasks.value.size.toFloat()
-
-            _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
-            _teamBuildingAmount.value = _teamBuildingTasks.value.size.toFloat()
+            refreshTasks()
         }
     }
 
+    private suspend fun refreshTasks() {
+        _tasks.value = getTasksUseCase.execute()
+        _tasksAmount.value = _tasks.value.size.toFloat()
 
-    //I dont need this function - because I wont delete any rows in my tables - I will just change their isDone value
-    fun deleteTask(task: Task) {
+        _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
+        _requiredAmount.value = _requiredTasks.value.size.toFloat()
+
+        _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
+        _optionalAmount.value = _optionalTasks.value.size.toFloat()
+
+        _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
+        _teamBuildingAmount.value = _teamBuildingTasks.value.size.toFloat()
+    }
+
+    fun onTaskCompleted() {
         viewModelScope.launch {
-            deleteTaskUseCase.execute(task)
-            // Refresh the tasks list after deletion
-            _tasks.value = getTasksUseCase.execute()
+            refreshTasks()
         }
     }
 
+
+    fun setTaskAsDone(taskId: Int) {
+        viewModelScope.launch {
+            setTaskAsDoneUseCase.invoke(taskId)
+        }
+    }
 }

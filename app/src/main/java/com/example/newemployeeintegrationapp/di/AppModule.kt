@@ -10,6 +10,7 @@ import com.example.newemployeeintegrationapp.data.repository.UserRepository
 import com.example.newemployeeintegrationapp.domain.usecase.DeleteTaskUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksByTypeUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksUseCase
+import com.example.newemployeeintegrationapp.domain.usecase.SetTaskAsDoneUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -69,5 +70,11 @@ object AppModule {
     @Singleton
     fun provideUserRepository(userDao: UserDao): UserRepository {
         return UserRepository(userDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideSetTaskAsDoneUseCase(repository: TaskRepository): SetTaskAsDoneUseCase {
+        return SetTaskAsDoneUseCase(repository)
     }
 }
