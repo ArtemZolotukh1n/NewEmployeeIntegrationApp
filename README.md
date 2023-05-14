@@ -33,7 +33,7 @@ Quest App is a task management application developed using Android Jetpack Compo
 ## Screenshots
 
 ### Main Screen
-![test image 1](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg)
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg" width="200" height="300" alt="test image 1">
 
 <img src="./res/drawable/second.jpg" width=400 height=300>
 
