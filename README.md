@@ -33,19 +33,19 @@ Quest App is a task management application developed using Android Jetpack Compo
 ## Screenshots
 
 ### Main Screen
-<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg" width="200" height="300" alt="test image 1">
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg" width="300" height="400" alt="test image 1">
 
-<img src="./res/drawable/second.jpg" width=400 height=300>
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/second.jpg" width="300" height="400" alt="test image 2">
 
-<img src="./res/drawable/third.jpg" width=400 height=300>
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/third.jpg" width="300" height="400" alt="test image 3">
 
-<img src="./res/drawable/fourth.jpg" width=400 height=300>
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/fourth.jpg" width="300" height="400" alt="test image 4">
 
 ### Knowladge database
-<img src="./res/drawable/fifth.jpg" width=400 height=300>
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/fifth.jpg" width="300" height="400" alt="test image 5">
 
 ### Leaderboard screen
-<img src="./res/drawable/sixs.jpg" width=400 height=300>
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/sixs.jpg" width="300" height="400" alt="test image 6">
 
 # License
 This project is licensed under the GNU Affero General Public License v3.0. This license helps to ensure that any derivative works or services using this code are also open-source, and the source code must be made available to the users. The Affero GPL is designed to prevent anyone from using your code in a closed-source, proprietary software, or web service without sharing the source code
