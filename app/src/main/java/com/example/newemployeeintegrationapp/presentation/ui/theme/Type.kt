@@ -13,12 +13,27 @@ val myCustomFont = FontFamily(
     Font(R.font.inter_regular, FontWeight.Normal)
 )
 
+val myCustomFontBold = FontFamily(
+    Font(R.font.inter_regular, FontWeight.Normal)
+)
+
+val progress = TextStyle(
+    fontFamily = myCustomFontBold,
+    fontWeight = FontWeight.Bold,
+    fontSize = 28.sp
+)
+
 // Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = myCustomFont,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp
+    ),
+    body2 = TextStyle(
+        fontFamily = myCustomFont,
+        fontWeight = FontWeight.Bold,
+        fontSize = 28.sp
     ),
     h1 = TextStyle(
         fontFamily = myCustomFont,
@@ -31,4 +46,5 @@ val Typography = Typography(
         color = Color.Gray,
         fontSize = 18.sp
     ),
-)
+
+    )

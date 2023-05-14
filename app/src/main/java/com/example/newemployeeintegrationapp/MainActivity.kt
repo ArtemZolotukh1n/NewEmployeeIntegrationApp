@@ -13,6 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
 import com.example.newemployeeintegrationapp.navigation.NavGraph
 import com.example.newemployeeintegrationapp.presentation.ui.app_bars.AppsBottomNavigationBar
+import com.example.newemployeeintegrationapp.presentation.viewModels.LeaderboardViewModel
 import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
 import com.example.newemployeeintegrationapp.ui.theme.NewEmployeeIntegrationAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,7 +35,8 @@ class MainActivity : ComponentActivity() {
                     ) {
                         NavGraph(
                             navController = navController,
-                            hiltViewModel<QuestScreenViewModel>()
+                            hiltViewModel<QuestScreenViewModel>(),
+                            hiltViewModel<LeaderboardViewModel>(),
                         )
                     }
                 }

@@ -23,9 +23,9 @@ fun MainQuestScreen(
     val requiredTasks = viewModel.requiredTasks.collectAsState().value
     val optionalTasks = viewModel.optionalTasks.collectAsState().value
     val teamBuildingTasks = viewModel.teamBuildingTasks.collectAsState().value
-    val requiredTasksTarget = viewModel.requiredAmount.collectAsState().value
-    val optionalTasksTarget = viewModel.optionalAmount.collectAsState().value
-    val teamBuildingTasksTarget = viewModel.teamBuildingAmount.collectAsState().value
+    val requiredTasksTarget = viewModel.completedRequiredAmount.collectAsState().value
+    val optionalTasksTarget = viewModel.completedOptionalAmount.collectAsState().value
+    val teamBuildingTasksTarget = viewModel.completedTeamBuildingAmount.collectAsState().value
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -46,9 +46,9 @@ fun MainQuestScreen(
         }
         item {
             CustomProgressBars(
-                requiredTasks,
-                optionalTasks,
-                teamBuildingTasks,
+                requiredTasks.size.toFloat(),
+                optionalTasks.size.toFloat(),
+                teamBuildingTasks.size.toFloat(),
                 requiredTasksTarget,
                 optionalTasksTarget,
                 teamBuildingTasksTarget

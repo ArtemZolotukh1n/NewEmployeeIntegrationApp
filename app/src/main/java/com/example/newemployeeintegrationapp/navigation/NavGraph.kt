@@ -10,14 +10,21 @@ import com.example.eestechhckathon.QuestTopAppBar
 import com.example.eestechhckathon.QuestTopAppBarWithBackArrow
 import com.example.newemployeeintegrationapp.presentation.ui.screens.AllTasksByTypeFiles.AllTasksByTypeScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.KnowledgeDatabaseScreen
+import com.example.newemployeeintegrationapp.presentation.ui.screens.LeanderBoardFiles.LeaderBoardScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.MainQuestScreen
+import com.example.newemployeeintegrationapp.presentation.ui.screens.ProfileFiles.UserProfileScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.QuestDescScreen
 import com.example.newemployeeintegrationapp.presentation.ui.screens.SettingsFiles.SettingsScreen
+import com.example.newemployeeintegrationapp.presentation.viewModels.LeaderboardViewModel
 import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun NavGraph(navController: NavHostController, questScreenViewModel: QuestScreenViewModel) {
+fun NavGraph(
+    navController: NavHostController,
+    questScreenViewModel: QuestScreenViewModel,
+    leaderboardViewModel: LeaderboardViewModel
+) {
     NavHost(
         navController = navController,
         startDestination = Screen.QuestScreen.route
@@ -70,6 +77,18 @@ fun NavGraph(navController: NavHostController, questScreenViewModel: QuestScreen
                     backStackEntry.arguments?.getString("taskPriority"),
                     questScreenViewModel
                 )
+            }
+        }
+
+        composable(Screen.LeaderBoardScreen.route) {
+            Scaffold(topBar = { QuestTopAppBar(screenTitle = "Лидерборд", navController) }) {
+                LeaderBoardScreen(leaderboardViewModel)
+            }
+        }
+
+        composable(Screen.ProfileScreen.route) {
+            Scaffold(topBar = { QuestTopAppBar(screenTitle = "Профиль", navController) }) {
+                UserProfileScreen(questScreenViewModel)
             }
         }
     }

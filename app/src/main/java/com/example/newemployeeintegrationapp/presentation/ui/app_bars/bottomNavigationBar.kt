@@ -61,6 +61,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             selected = false,
             onClick = {
                 selectedItem = 2
+                navController.navigate(Screen.ProfileScreen.route)
             },
             modifier = Modifier.padding(16.dp)
         ),
@@ -76,6 +77,8 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             selected = false,
             onClick = {
                 selectedItem = 3
+                navController.navigate(Screen.LeaderBoardScreen.route)
+
             },
             modifier = Modifier.padding(16.dp)
         ),

@@ -71,7 +71,7 @@ fun QuestTopAppBarWithBackArrow(screenTitle: String, navController: NavControlle
                 modifier = Modifier.padding(start = 8.dp)
             )
         }
-        Row(
+       /* Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(end = 8.dp)
@@ -80,20 +80,20 @@ fun QuestTopAppBarWithBackArrow(screenTitle: String, navController: NavControlle
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Search icon
-            IconButton(onClick = { /* Handle search icon click */ }) {
+            IconButton(onClick = { *//* Handle search icon click *//* }) {
                 Icon(
                     imageVector = Icons.Default.Search,
                     contentDescription = "Search"
                 )
             }
             // Bell icon
-            IconButton(onClick = { /* Handle bell icon click */ }) {
+            IconButton(onClick = { *//* Handle bell icon click *//* }) {
                 Icon(
                     imageVector = Icons.Default.Notifications,
                     contentDescription = "Notifications"
                 )
             }
-        }
+        }*/
     }
 }
 
