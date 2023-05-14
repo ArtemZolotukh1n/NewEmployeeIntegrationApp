@@ -26,8 +26,8 @@ fun AchievementItem(
         Icon(
             painter = painterResource(id = achievement.imageRes),
             contentDescription = null,
-            tint = Color.LightGray,
-            modifier = Modifier.size(30.dp)
+            tint = achievement.color,
+            modifier = Modifier.size(50.dp)
         )
         Text(
             text = achievement.name,

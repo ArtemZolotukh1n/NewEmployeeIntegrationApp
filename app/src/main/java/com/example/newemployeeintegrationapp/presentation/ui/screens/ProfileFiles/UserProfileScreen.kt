@@ -12,8 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.newemployeeintegrationapp.R
 import com.example.newemployeeintegrationapp.presentation.viewModels.QuestScreenViewModel
-import com.example.newemployeeintegrationapp.ui.theme.myCustomFont
-import com.example.newemployeeintegrationapp.ui.theme.myCustomFontBold
 import com.example.newemployeeintegrationapp.ui.theme.progress
 
 @Composable
@@ -86,9 +84,9 @@ fun UserProfileScreen(
         item {
             AchievementRow(
                 achievements = listOf(
-                    Achievement("Первые шаги", R.drawable.baby),
-                    Achievement("Душа компании", R.drawable.baloons),
-                    Achievement("Чемпион", R.drawable.diamond),
+                    Achievement("Первые шаги", R.drawable.baby, Color.Green),
+                    Achievement("Душа компании", R.drawable.baloons, Color.Blue),
+                    Achievement("Чемпион", R.drawable.diamond, Color(0xFF785908)),
                 ),
             )
         }

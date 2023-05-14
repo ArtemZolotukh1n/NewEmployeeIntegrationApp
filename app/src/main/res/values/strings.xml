@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">NewEmployeeIntegrationApp</string>
+    <string name="task_list">Список задач</string>
+    <string name="knowladge_base">База знаний</string>
+    <string name="profile">Профиль</string>
+    <string name="leaderboard">Лидерборд</string>
+    <string name="settings">Настройки</string>
 </resources>

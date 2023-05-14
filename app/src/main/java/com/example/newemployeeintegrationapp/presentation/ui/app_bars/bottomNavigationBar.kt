@@ -6,6 +6,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.newemployeeintegrationapp.R
@@ -21,7 +22,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.fi_bs_list),
-                    contentDescription = "Список задач",
+                    contentDescription = stringResource(R.string.task_list),
                     tint = if (selectedItem == 0) MaterialTheme.colors.primary else LocalContentColor.current,
                     modifier = Modifier.size(16.dp)
                 )
@@ -37,7 +38,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.knowlagebase),
-                    contentDescription = "База знаний",
+                    contentDescription = stringResource(R.string.knowladge_base),
                     tint = if (selectedItem == 1) MaterialTheme.colors.primary else LocalContentColor.current,
                     modifier = Modifier.size(16.dp)
                 )
@@ -53,7 +54,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.user),
-                    contentDescription = "Профиль",
+                    contentDescription = stringResource(R.string.profile),
                     tint = if (selectedItem == 2) MaterialTheme.colors.primary else LocalContentColor.current,
                     modifier = Modifier.size(16.dp)
                 )
@@ -69,7 +70,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.sertificat),
-                    contentDescription = "Лидерборд",
+                    contentDescription = stringResource(R.string.leaderboard),
                     tint = if (selectedItem == 3) MaterialTheme.colors.primary else LocalContentColor.current,
                     modifier = Modifier.size(16.dp)
                 )
@@ -86,7 +87,7 @@ fun AppsBottomNavigationBar(navController: NavHostController) {
             icon = {
                 Icon(
                     painter = painterResource(id = R.drawable.settings),
-                    contentDescription = "Настройки",
+                    contentDescription = stringResource(R.string.settings),
                     tint = if (selectedItem == 4) MaterialTheme.colors.primary else LocalContentColor.current,
                     modifier = Modifier.size(16.dp)
                 )
