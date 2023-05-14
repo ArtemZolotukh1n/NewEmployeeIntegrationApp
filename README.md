@@ -32,17 +32,17 @@ Quest App is a task management application developed using Android Jetpack Compo
 
 ## Screenshots
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/837f70af-6708-4851-a68a-3179539ecaed)
+<img src="D:/assests/first.jpg" width="200">
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/872365e2-2d4f-43aa-a1be-03dcc4c8ac58)
+<img src="D:/assests/second.jpg" width="200">
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/b7dc8d39-bb32-4a8c-9639-096016c776db)
+<img src="D:/assests/third.jpg" width="200">
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/b2594bf5-4425-4808-8e6a-ae88fe4de9be)
+<img src="D:/assests/fourth.jpg" width="200">
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/6481ec05-a62b-494b-b658-2f00f20cba24)
+<img src="D:/assests/fifth.jpg" width="200">
 
-![image](https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/assets/90614769/7d9346e1-6b9a-44b4-8482-0b84a75fe497)
+<img src="D:/assests/sixs.jpg" width="200">
 
 # License
 This project is licensed under the GNU Affero General Public License v3.0. This license helps to ensure that any derivative works or services using this code are also open-source, and the source code must be made available to the users. The Affero GPL is designed to prevent anyone from using your code in a closed-source, proprietary software, or web service without sharing the source code
