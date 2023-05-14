@@ -33,7 +33,7 @@ Quest App is a task management application developed using Android Jetpack Compo
 ## Screenshots
 
 ### Main Screen
-<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg" width="250" height="500" alt="test image 1"><img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/second.jpg" width="250" height="500" alt="test image 2"><img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/third.jpg" width="250" height="500" alt="test image 3"><img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/fourth.jpg" width="250" height="500" alt="test image 4">
+<img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/first.jpg" width="250" height="500" alt="test image 1"> <img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/second.jpg" width="250" height="500" alt="test image 2"> <img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/third.jpg" width="250" height="500" alt="test image 3"> <img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/fourth.jpg" width="250" height="500" alt="test image 4">
 
 ### Knowladge database
 <img src="https://github.com/ArtemZolotukh1n/NewEmployeeIntegrationApp/blob/master/app/src/main/res/drawable/fifth.jpg" width="250" height="500" alt="test image 5">
