@@ -3,9 +3,9 @@ package com.example.newemployeeintegrationapp.presentation.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newemployeeintegrationapp.domain.model.Task
-import com.example.newemployeeintegrationapp.domain.usecase.DeleteTaskUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksByTypeUseCase
 import com.example.newemployeeintegrationapp.domain.usecase.GetTasksUseCase
+import com.example.newemployeeintegrationapp.domain.usecase.SetTaskAsDoneUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -16,8 +16,11 @@ import javax.inject.Inject
 class QuestScreenViewModel @Inject constructor(
     private val getTasksUseCase: GetTasksUseCase,
     private val getTasksByTypeUseCase: GetTasksByTypeUseCase,
-    private val deleteTaskUseCase: DeleteTaskUseCase
+    private val setTaskAsDoneUseCase: SetTaskAsDoneUseCase
 ) : ViewModel() {
+    /*Окей - тут все говно - таски не рефрешаться в функции, так как им просто дается тот же массив тасков
+    * нужна наверное переменная которая держит невыполненные таски + переменная которая держит число невыполненных или что-то такое
+    * */
     private val _tasks = MutableStateFlow<List<Task>>(emptyList())
     val AllTasks: StateFlow<List<Task>> get() = _tasks
 
@@ -30,35 +33,52 @@ class QuestScreenViewModel @Inject constructor(
     private val _teamBuildingTasks = MutableStateFlow<List<Task>>(emptyList())
     val teamBuildingTasks: StateFlow<List<Task>> get() = _teamBuildingTasks
 
-    private val _tasksAmount = MutableStateFlow(0)
-    val tasksAmount: StateFlow<Int> get() = _tasksAmount
-    private val _requiredAmount = MutableStateFlow(0)
-    val requiredAmount: StateFlow<Int> get() = _requiredAmount
-    private val _optionalAmount = MutableStateFlow(0)
-    val optionalAmount: StateFlow<Int> get() = _optionalAmount
-    private val _teamBuildingAmount = MutableStateFlow(0)
-    val teamBuildingAmount: StateFlow<Int> get() = _teamBuildingAmount
+    private val _completedTasksAmount = MutableStateFlow(0f)
+    val tasksAmount: StateFlow<Float> get() = _completedTasksAmount
+
+    private val _completedRequiredAmount = MutableStateFlow(0f)
+    val completedRequiredAmount: StateFlow<Float> get() = _completedRequiredAmount
+
+    private val _completedOptionalAmount = MutableStateFlow(0f)
+    val completedOptionalAmount: StateFlow<Float> get() = _completedOptionalAmount
+
+    private val _completedTeamBuildingAmount = MutableStateFlow(0f)
+    val completedTeamBuildingAmount: StateFlow<Float> get() = _completedTeamBuildingAmount
 
 
     init {
         viewModelScope.launch {
-            _tasks.value = getTasksUseCase.execute()
-            _tasksAmount.value = _tasks.value.size
-            _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
-            _requiredAmount.value = _requiredTasks.value.size
-            _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
-            _optionalAmount.value = _optionalTasks.value.size
-            _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
-            _teamBuildingAmount.value = _teamBuildingTasks.value.size
+            refreshTasks()
         }
     }
 
-    fun deleteTask(task: Task) {
+    private suspend fun refreshTasks() {
+        _tasks.value = getTasksUseCase.execute()
+        _completedTasksAmount.value = _tasks.value.filter { it.isDone == 1 }.size.toFloat()
+
+        _requiredTasks.value = getTasksByTypeUseCase.execute("REQUIRED")
+        _completedRequiredAmount.value =
+            _requiredTasks.value.filter { it.isDone == 1 }.size.toFloat()
+
+        _optionalTasks.value = getTasksByTypeUseCase.execute("OPTIONAL")
+        _completedOptionalAmount.value =
+            _optionalTasks.value.filter { it.isDone == 1 }.size.toFloat()
+
+        _teamBuildingTasks.value = getTasksByTypeUseCase.execute("TEAM_BUILDING")
+        _completedTeamBuildingAmount.value =
+            _teamBuildingTasks.value.filter { it.isDone == 1 }.size.toFloat()
+    }
+
+    fun onTaskCompleted() {
         viewModelScope.launch {
-            deleteTaskUseCase.execute(task)
-            // Refresh the tasks list after deletion
-            _tasks.value = getTasksUseCase.execute()
+            refreshTasks()
         }
     }
 
+
+    fun setTaskAsDone(taskId: Int) {
+        viewModelScope.launch {
+            setTaskAsDoneUseCase.invoke(taskId)
+        }
+    }
 }

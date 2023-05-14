@@ -18,5 +18,8 @@ data class TaskEntity(
     val description: String,
 
     @NotNull
-    val taskType: String
+    val taskType: String,
+
+    @NotNull
+    val isDone: Int
 )

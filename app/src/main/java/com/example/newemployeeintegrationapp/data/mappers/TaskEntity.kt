@@ -8,7 +8,8 @@ fun TaskEntity.toDomainModel(): Task {
         id = this.id,
         task = this.task,
         description = this.description,
-        taskType = this.taskType
+        taskType = this.taskType,
+        isDone = this.isDone
     )
 }
 
@@ -17,6 +18,7 @@ fun Task.toEntityModel(): TaskEntity {
         id = this.id,
         task = this.task,
         description = this.description,
-        taskType = this.taskType
+        taskType = this.taskType,
+        isDone = this.isDone
     )
 }

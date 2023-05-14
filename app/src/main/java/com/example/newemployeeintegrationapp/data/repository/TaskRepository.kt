@@ -23,4 +23,7 @@ class TaskRepository @Inject constructor(
         taskDao.deleteTask(task.toEntityModel())
     }
 
+    suspend fun setTaskAsDone(taskId: Int) {
+        taskDao.setTaskAsDone(taskId)
+    }
 }
